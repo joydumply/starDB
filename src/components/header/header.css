@@ -18,6 +18,9 @@
     text-decoration: none;
   }
   
+  .header a {
+    text-decoration: none;
+  }
   .header h3 a {
     color: white;
   }
