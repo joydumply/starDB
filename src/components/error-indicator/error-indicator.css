@@ -11,7 +11,7 @@
     text-align: center;
     margin-bottom: 10px;
 }
-img{ 
+.error-indicator img{ 
     max-width: 60px;
     display: block;
     margin: 0 auto 10px;
