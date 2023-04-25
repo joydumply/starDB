@@ -11,11 +11,26 @@ const {
     getAllPlanets
 } = swapiService;
 
-const PersonList = withData(ItemList, getAllPeople)
+const withChildFunction = (Wrapped, fn) => {
+    return (props) => {
+        return (
+            <Wrapped {...props}>
+                {fn}
+            </Wrapped>
+        )
+    }
+}
 
-const PlanetList = withData(ItemList, getAllPlanets);
+const renderName = ( {name} ) => <span>{name}</span>
 
-const StarshipList = withData(ItemList, getAllStarships)
+const renderStarshipLabel = ({model, name}) => <span>{name} ({model})</span>
+
+
+const PersonList = withData(withChildFunction(ItemList, renderName), getAllPeople)
+
+const PlanetList = withData(withChildFunction(ItemList, renderName), getAllPlanets);
+
+const StarshipList = withData(withChildFunction(ItemList, renderStarshipLabel), getAllStarships)
 
 export { 
     PersonList,
