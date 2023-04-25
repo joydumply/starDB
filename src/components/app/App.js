@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-// import ItemDetails, { Record } from '../item-details';
-import ItemDetails, { Record } from '../item-details'
+
 import ErrorIndicator from '../error-indicator';
 import ErrorButton from '../error-button';
 import swapiService from '../../services/swapi-service';
-import Row from '../row';
+
+import { SwapiServiceProvider } from '../swapi-service-context';
+
 
 import './App.css';
 import { PersonList, StarshipList, PlanetList, PersonDetails, PlanetDetails, StarshipDetails } from '../sw-components';
@@ -42,51 +43,26 @@ export default class App extends Component {
     }
 
 
-    const {getPerson, getStarship, getPersonImage, getStarshipImage} = this.swapiService;
-
-    const personDetails = (
-      <ItemDetails itemID={11} 
-      getData={getPerson}
-      getImageUrl={getPersonImage}>
-        <Record field="gender" label="Gender" />
-        <Record field="birthYear" label="Birth Year" />
-        <Record field="eyeColor" label="Eye Color" />
-      </ItemDetails>
-    );
-
-    const starshipDetails = (
-      <ItemDetails 
-        itemID={5} 
-        getData={getStarship}
-        getImageUrl={getStarshipImage}>
-        <Record field="model" label="Model" />  
-        <Record field="length" label="Length" />  
-        <Record field="costInCredits" label="Cost" />  
-      </ItemDetails>
-    )
-
-    const personList = (
-        <PersonList> 
-          {({name}) => <span>{name}</span>}
-        </PersonList>
-    );
-
     return (
       <div className='container'>
-        <Header />
-        <RandomPlanet />
+        <SwapiServiceProvider value={this.swapiService}>
+          <div className='stardb-app'>
+            <Header />
+            <RandomPlanet />
 
-        
-        <ErrorButton onErrorButtonClick={ this.onErrorButtonClick } />
-        <PersonDetails itemId={11} />
-        <PlanetDetails itemId={5} />
-        <StarshipDetails itemId={2} />
+            
+            <ErrorButton onErrorButtonClick={ this.onErrorButtonClick } />
+            <PersonDetails itemId={11} />
+            <PlanetDetails itemId={5} />
+            <StarshipDetails itemId={2} />
 
-        <PersonList/>
+            <PersonList/>
 
-        <StarshipList />
-        
-        <PlanetList />
+            <StarshipList />
+
+            <PlanetList />
+          </div>
+        </SwapiServiceProvider>
       </div>
     )
   }
