@@ -10,6 +10,8 @@ import swapiService from '../../services/swapi-service';
 import Row from '../row';
 
 import './App.css';
+import { PersonList, StarshipList, PlanetList, PersonDetails, PlanetDetails, StarshipDetails } from '../sw-components';
+
 
 
 
@@ -53,24 +55,41 @@ export default class App extends Component {
     );
 
     const starshipDetails = (
-      <ItemDetails itemID={5} 
-      getData={getStarship}
-      getImageUrl={getStarshipImage}>
+      <ItemDetails 
+        itemID={5} 
+        getData={getStarship}
+        getImageUrl={getStarshipImage}>
         <Record field="model" label="Model" />  
         <Record field="length" label="Length" />  
         <Record field="costInCredits" label="Cost" />  
       </ItemDetails>
     )
 
+    const personList = (
+        <PersonList> 
+          {({name}) => <span>{name}</span>}
+        </PersonList>
+    );
+
     return (
       <div className='container'>
         <Header />
         <RandomPlanet />
+
+        
         <ErrorButton onErrorButtonClick={ this.onErrorButtonClick } />
-        <Row 
-          left={personDetails}
-          right={starshipDetails}
-        />
+        <PersonDetails itemId={11} />
+        <PlanetDetails itemId={5} />
+        <StarshipDetails itemId={2} />
+        <PersonList>
+        { ( {name} ) => <span>{name}</span> }
+        </PersonList>
+        <StarshipList >
+        { ( {name} ) => <span>{name}</span> }
+        </StarshipList>
+        <PlanetList >
+        { ( {name} ) => <span>{name}</span> }
+        </PlanetList>
       </div>
     )
   }
