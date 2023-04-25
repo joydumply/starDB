@@ -52,9 +52,9 @@ export default class App extends Component {
 
             
             <ErrorButton onErrorButtonClick={ this.onErrorButtonClick } />
-            <PersonDetails itemId={11} />
-            <PlanetDetails itemId={5} />
-            <StarshipDetails itemId={2} />
+            <PersonDetails itemID={11} />
+            <PlanetDetails itemID={5} />
+            <StarshipDetails itemID={2} />
 
             <PersonList/>
 
