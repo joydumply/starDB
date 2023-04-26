@@ -1,22 +1,12 @@
 import React, { Component } from 'react';
-
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-
 import ErrorIndicator from '../error-indicator';
 import ErrorButton from '../error-button';
+import { PeoplePage, StarshipPage, PlanetPage } from '../pages';
 import swapiService from '../../services/swapi-service';
-
 import { SwapiServiceProvider } from '../swapi-service-context';
-
-
 import './App.css';
-import { PersonList, StarshipList, PlanetList, PersonDetails, PlanetDetails, StarshipDetails } from '../sw-components';
-
-
-
-
-
 
 export default class App extends Component {
 
@@ -49,18 +39,10 @@ export default class App extends Component {
           <div className='stardb-app'>
             <Header />
             <RandomPlanet />
-
-            
+            <PeoplePage />
+            <StarshipPage />
+            <PlanetPage />
             <ErrorButton onErrorButtonClick={ this.onErrorButtonClick } />
-            <PersonDetails itemID={11} />
-            <PlanetDetails itemID={5} />
-            <StarshipDetails itemID={2} />
-
-            <PersonList/>
-
-            <StarshipList />
-
-            <PlanetList />
           </div>
         </SwapiServiceProvider>
       </div>
