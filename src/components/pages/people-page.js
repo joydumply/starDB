@@ -17,6 +17,7 @@ export default class PeoplePage extends Component{
 
         return (
             <Row
+                // left={<PersonList />} // default props without func
                 left={<PersonList onItemSelected={this.onItemSelected} />}
                 right={<PersonDetails itemID={selectedItem} />}
             />
