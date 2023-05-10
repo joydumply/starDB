@@ -55,7 +55,7 @@ export default class App extends Component {
                 <Route path="/people" element={<PeoplePage/>} />
                 <Route path="/planets" element={<PlanetPage/>} />
                 <Route path="/starships" element={<StarshipPage/>} />
-                <Route path="/starships/:id" element={<ElementWrapper/>} />
+                <Route path="/starships/:id" element={<ElementWrapper test="test"/>} />
               </Routes>
               <ErrorButton onErrorButtonClick={ this.onErrorButtonClick } />
             </div>
