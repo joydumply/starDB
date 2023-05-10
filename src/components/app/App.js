@@ -12,8 +12,8 @@ import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-
 import { StarshipDetails } from '../sw-components';
 
 
-const ElementWrapper = () => {
-  const {id} = useParams();
+const ElementWrapper = () => { // создан HOC (High Order Component) чтобы корректно вызвать нужный элемент. В будущем переделать под элементы всех страниц, а не только Кораблей
+  const {id} = useParams(); // ловит параметры которые переданы урлом
 
   return <StarshipDetails itemID={id} />;
 }
