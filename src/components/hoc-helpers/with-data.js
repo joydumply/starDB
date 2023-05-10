@@ -24,13 +24,13 @@ const withData = ( View ) => {
             data,
             loading: false
           })
-          .catch( () => {
-            this.setState({
-              loading: false,
-              error: true
-            })
-          });
         })
+        .catch( () => {
+          this.setState({
+            loading: false,
+            error: true
+          })
+        });
       }
       render() {
         const { data, error, loading } = this.state;
