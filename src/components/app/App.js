@@ -3,7 +3,7 @@ import Header from '../header';
 import RandomPlanet from '../random-planet';
 import ErrorIndicator from '../error-indicator';
 import ErrorButton from '../error-button';
-import { PeoplePage, StarshipPage, PlanetPage } from '../pages';
+import { PeoplePage, StarshipPage, PlanetPage, LoginPage,SecretPage, Page404  } from '../pages';
 import swapiService from '../../services/swapi-service';
 import { SwapiServiceProvider } from '../swapi-service-context';
 import './App.css';
@@ -20,7 +20,8 @@ const ElementWrapper = () => { // создан HOC (High Order Component) что
 export default class App extends Component {
 
   state = {
-    hasError: false
+    hasError: false,
+    isLoggedIn: false
   }
 
   swapiService = new swapiService();
@@ -35,7 +36,15 @@ export default class App extends Component {
     this.setState({hasError: true});
   }
 
+  onLogin = () => {
+    this.setState({
+      isLoggedIn : true
+    })
+  }
+
   render(){
+
+    const { isLoggedIn } = this.state;
 
     if(this.state.hasError){
       return <ErrorIndicator />
@@ -56,6 +65,10 @@ export default class App extends Component {
                 <Route path="/planets" element={<PlanetPage/>} />
                 <Route path="/starships" element={<StarshipPage/>} />
                 <Route path="/starships/:id" element={<ElementWrapper test="test"/>} />
+                <Route path="/login" element={<LoginPage isLoggedIn={isLoggedIn} onLogin={this.onLogin}/>} />
+                <Route path="/secret" element={<SecretPage isLoggedIn={isLoggedIn}/>} />
+
+                <Route path="*" element={<Page404 />} />
               </Routes>
               <ErrorButton onErrorButtonClick={ this.onErrorButtonClick } />
             </div>
