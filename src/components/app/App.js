@@ -52,7 +52,7 @@ export default class App extends Component {
 
               <Routes>
                 <Route path="/" element={<h2>Welcome to StarDB</h2>} />
-                <Route path="/people" element={<PeoplePage/>} />
+                <Route path="/people/:id?" element={<PeoplePage/>} />
                 <Route path="/planets" element={<PlanetPage/>} />
                 <Route path="/starships" element={<StarshipPage/>} />
                 <Route path="/starships/:id" element={<ElementWrapper test="test"/>} />

@@ -7,8 +7,8 @@ const StarshipPage = () => {
     const navigate = useNavigate();
     return (
         <StarshipList onItemSelected={(itemID) =>{
-            const newPath = `/starships/${itemID}/`;
-            navigate(newPath)
+            // const newPath = `itemID`;
+            navigate(itemID)
         }} />
     )
 }
